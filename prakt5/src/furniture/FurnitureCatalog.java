@@ -24,27 +24,29 @@ public class FurnitureCatalog extends FurnitureShop implements ConsoleInterface 
 
     @Override
     public void getInfo() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Введите номер товара, который желаете приобрести:");
+        while (true) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Введите номер товара, который желаете приобрести:");
 
-        try {
-            int num = sc.nextInt();
+            try {
+                int num = sc.nextInt();
 
-            System.out.println("Вы действительно желаете приобрести " + assortment[num - 1].getName() + " за " + assortment[num - 1].getPrice() + "$?");
-            System.out.println("Введите 1 если да или любое другое число если нет\n");
+                System.out.println("Вы действительно желаете приобрести " + assortment[num - 1].getName() + " за " + assortment[num - 1].getPrice() + "$?");
+                System.out.println("Введите 1 если да, или любое другое число если нет, чтобы закрыть каталог введите 2\n");
 
-            int op = sc.nextInt();
+                int op = sc.nextInt();
 
-            if (op == 1) {
-                System.out.println("Вы успешно приобрели " + assortment[num - 1].getName() + " за " + assortment[num - 1].getPrice() + "$!");
-            } else {
-                System.out.println("До свидания!");
+                if (op == 1) {
+                    System.out.println("Вы успешно приобрели " + assortment[num - 1].getName() + " за " + assortment[num - 1].getPrice() + "$!");
+                } else if(op == 2){
+                    System.out.println("До свидания!");
+                    break;
+                }
+
+            } catch (Exception ex) {
+                System.err.println("Неверный ввод!");
             }
-
-        } catch (Exception ex) {
-            System.err.println("Неверный вво!");
         }
-
 
     }
 }
